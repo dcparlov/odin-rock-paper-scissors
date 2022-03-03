@@ -29,14 +29,48 @@ function playRound(playerSelection, computerSelection) {
         case (playerSelection === "Scissors" && computerSelection === "Rock") :
             return "You Lose! Rock beats Scissors";
             break;
-     
-
     }
 }
 
+function game() {
+    let playerCounter = 0;
+    let computerCounter = 0;
+    let playerSelection = window.prompt("Choose a hand");
+
+    for (let i = 0; i < 5; i++) {
+        const computerSelection = computerPlay();
+        const result = playRound(playerSelection, computerSelection);
+        if (result.search("Win") > 0) {
+            playerCounter++;
+            console.log("Player wins this round")
+            console.log("PlayerCounter: " + playerCounter);
+            console.log("ComputerCounter: " + computerCounter);    
+        } else if (result.search("Lose") > 0) {
+            computerCounter++;
+            console.log("Computer wins this round");
+            console.log("PlayerCounter: " + playerCounter);
+            console.log("ComputerCounter: " + computerCounter);
+        } else  {
+            console.log("It's a draw");
+            console.log("PlayerCounter: " + playerCounter);
+            console.log("ComputerCounter: " + computerCounter);
+        }
+    }   
+    
+    if (playerCounter > computerCounter) {
+        return "Player Wins the game!";
+    } else if (playerCounter < computerCounter) {
+        return "Computer Wins the game!";
+    } else return "It's a draw";
+}
+game();
+
+
+/*
 const playerSelection = "rock";
 const computerSelection = computerPlay();
 
 console.log(playerSelection);
 console.log(computerSelection);
 console.log(playRound(playerSelection, computerSelection));
+*/
