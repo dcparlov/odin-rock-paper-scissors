@@ -35,11 +35,14 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerCounter = 0;
     let computerCounter = 0;
-    let playerSelection = window.prompt("Choose a hand");
 
     for (let i = 0; i < 5; i++) {
         const computerSelection = computerPlay();
+        let playerSelection = window.prompt("Choose a hand");
         const result = playRound(playerSelection, computerSelection);
+        playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
+        console.log(`Player hand: ${playerSelection}`);
+        console.log(`Computer hand: ${computerSelection}`);
         if (result.search("Win") > 0) {
             playerCounter++;
             console.log("Player wins this round")
@@ -58,10 +61,11 @@ function game() {
     }   
     
     if (playerCounter > computerCounter) {
-        return "Player Wins the game!";
+        console.log("Player Wins the game!");
+
     } else if (playerCounter < computerCounter) {
-        return "Computer Wins the game!";
-    } else return "It's a draw";
+        console.log( "Computer Wins the game!"); 
+    } else console.log("It's a draw");
 }
 game();
 
