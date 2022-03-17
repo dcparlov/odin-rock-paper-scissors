@@ -5,33 +5,71 @@ const computerPlay = () => {
     return result[index];
 }
 
+const divResult = document.querySelector('#result');
+const divPlayerHand = document.querySelector('#player-hand');
+const divCompHand = document.querySelector('#computer-hand');
+
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
     switch (true) {
         case (playerSelection === computerSelection) :
-            return "It's a draw!";
+            divPlayerHand.textContent = `You chose: ${playerSelection}`;
+            divCompHand.textContent = `They chose: ${computerSelection}`;
+            divResult.textContent =  "It's a draw!";
             break;
-       case (playerSelection === "Rock" && computerSelection === "Scissors") :
-            return "You Win! Rock beats Scissors";
+        case (playerSelection === "Rock" && computerSelection === "Scissors") :
+            divPlayerHand.textContent = `You chose: ${playerSelection}`;
+            divCompHand.textContent = `They chose: ${computerSelection}`;
+            divResult.textContent =  "You Win! Rock beats Scissors";
             break;
         case (playerSelection === "Rock" && computerSelection === "Paper") :
-            return "You Lose! Paper beats Rock";
+            divPlayerHand.textContent = `You chose: ${playerSelection}`;
+            divCompHand.textContent = `They chose: ${computerSelection}`;
+            divResult.textContent =  "You Lose! Paper beats Rock";
             break;
         case (playerSelection === "Paper" && computerSelection === "Scissors") :
-            return "You Lose! Scissors beats Paper";
+            divPlayerHand.textContent = `You chose: ${playerSelection}`;
+            divCompHand.textContent = `They chose: ${computerSelection}`;
+            divResult.textContent =  "You Lose! Scissors beats Paper";
             break;
         case (playerSelection === "Paper" && computerSelection === "Rock") :
-            return "You Win! Paper beats Rock";
+            divPlayerHand.textContent = `You chose: ${playerSelection}`;
+            divCompHand.textContent = `They chose: ${computerSelection}`;
+            divResult.textContent =  "You Win! Paper beats Rock";
             break;
         case (playerSelection === "Scissors" && computerSelection === "Paper") :
-            return "You Win! Scissors beats Paper";
+            divPlayerHand.textContent = `You chose: ${playerSelection}`;
+            divCompHand.textContent = `They chose: ${computerSelection}`;
+            divResult.textContent =  "You Win! Scissors beats Paper";
             break;
         case (playerSelection === "Scissors" && computerSelection === "Rock") :
-            return "You Lose! Rock beats Scissors";
+            divPlayerHand.textContent = `You chose: ${playerSelection}`;
+            divCompHand.textContent = `They chose: ${computerSelection}`;
+            divResult.textContent = "You Lose! Rock beats Scissors";
             break;
     }
 }
 
+function myFunction() {
+    alert ("Hello World!");
+}
+
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+      const computerSelection = computerPlay();
+      const playerSelection = button.id;
+      
+      playRound(playerSelection, computerSelection);
+  }
+)});
+
+
+
+
+/*
 function game() {
     let playerCounter = 0;
     let computerCounter = 0;
@@ -69,6 +107,7 @@ function game() {
 }
 game();
 
+*/
 
 /*
 const playerSelection = "rock";
